@@ -16,14 +16,20 @@ class Jogador:
     def mostra_pontos(self):
         print("Cérebros: ", self.cerebro, "Tiros: ", self.tiro, "Passos: ", self.passo)
 
-    def set_cerebro(self):
-        pass
+    def set_nome(self, nome):
+        self.nome = nome
 
-    def set_tiro(self):
-        pass
+    def get_nome(self,nome):
+        return nome
 
-    def set_passo(self):
-        pass
+    def set_cerebro(self, cerebro):
+        self.cerebro = cerebro
+
+    def set_tiro(self, tiro):
+        self.tiro = tiro
+
+    def set_passo(self,passo):
+        self.passo = passo
 
 
 # definicao de listas
@@ -54,6 +60,7 @@ def rola_dado():
 
 # definicao de variaveis globais
 partida = False
+turno = False
 
 # lógica do jogo
 
@@ -61,25 +68,27 @@ print("---------------\n")
 regras = int(input("Bem vindo ao Zombie Dice Redux, deseje ler as regras do jogo? [1] - Sim [2] - Não\n"))
 if regras == 1:
     print("REGRAS DO JOGO")
+    partida = True
 elif regras == 2:
     print("Ok, vamos prosseguir")
-
-while len(lista_jogadores) == 0:
-    try:
-        q_jogadores = int(input("Informe o numero de jogadores:\n"))
-        if q_jogadores >= 2:
-            pass  # todo: adicionar intância de classe Jogador
-        else:
-            print("Valor invalido, o jogo precisa de pelo menos 2 jogadores.\n")
-
-        enche_copo()
-        partida = True
-
-    except:
-        print("Valor invalido, o jogo precisa de pelo menos 2 jogadores.\n")
+    partida = True
 
 while partida == True:
     try:
-        pass
+        print("*** Partida iniciada ***")
+        enche_copo()
+        jogador1 = Jogador
+        jogador1.set_nome(input("Digite o nome do jogador: \n"))
+        jogador1.set_passo(0)
+        jogador1.set_tiro(0)
+        jogador1.set_cerebro(0)
+        turno = True
+
+        while turno == True:
+            try:
+                print("Olá {}, o que deseja fazer:\n [1] - Rolar dados [2] - Exibir status [3] Encerrar".format(jogador1.get_nome()))
+
+            except:
+                pass
     except:
         pass
